@@ -9,6 +9,9 @@ import Music from './components/Music/Music.jsx'
 import About from './components/About/About.jsx'
 import { useState, useRef, useEffect } from 'react'
 import {Routes, Route, useLocation, useNavigate ,Outlet} from 'react-router-dom'
+import axios from 'axios'
+
+axios.defaults.baseUrl = 'http://localhost:5000/'
 
 export const pageTitle = 'Henry Videogames'
 
