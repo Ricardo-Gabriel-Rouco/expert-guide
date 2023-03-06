@@ -11,7 +11,7 @@ import { useState, useRef, useEffect } from 'react'
 import {Routes, Route, useLocation, useNavigate ,Outlet} from 'react-router-dom'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:5000'
+axios.defaults.baseURL = 'https://videogamedeploy-production.up.railway.app'
 
 export const pageTitle = 'Henry Videogames'
 
