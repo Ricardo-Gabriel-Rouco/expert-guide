@@ -13,7 +13,7 @@ import axios from 'axios'
 
 export const fetchGames = () => {
   return (dispatch) => {
-    axios.get('http://localhost:5000/videogames')
+    axios.get('/videogames')
       .then(results => {
         dispatch({type: FETCH_GAMES, payload: [...results.data]})
         })
@@ -33,7 +33,7 @@ export const fetchGenres = () => {
     if (state.genres.length > 1) {
       dispatch({ type: FETCH_GENRES, payload: state.genres });
     } else {
-      axios.get('http://localhost:5000/genres')
+      axios.get('/genres')
         .then(results => {
           dispatch({type: FETCH_GENRES, payload: [...results.data]})
         })
@@ -72,7 +72,7 @@ export const fetchPlatforms = () => {
     if (state.platforms.length > 1) {
       dispatch({ type: PLATFORMS, payload: state.platforms });
     } else {
-      axios.get('http://localhost:5000/platforms')
+      axios.get('/platforms')
         .then(results => {
           dispatch({type: PLATFORMS, payload: [...results.data]})
         })
@@ -84,7 +84,7 @@ export const fetchPlatforms = () => {
 export function postGame(payload) {
   return async function () {
       try {
-          const apiData = await axios.post("http://localhost:5000/videogames", payload);
+          const apiData = await axios.post("/videogames", payload);
           return {
               type: POST_GAME,
               payload: apiData,
@@ -99,14 +99,14 @@ export function postGame(payload) {
 export const searchName = (payload) => {
   return (dispatch) => {
       if(!payload){
-        axios.get('http://localhost:5000/videogames')
+        axios.get('/videogames')
         .then(results => {
           dispatch({type: FETCH_GAMES, payload: [...results.data]})
         })
         .catch(error => console.log(error))
       }
       else if(payload.name) {
-        axios.get(`http://localhost:5000/videogame?name=${payload.name}`)
+        axios.get(`/videogame?name=${payload.name}`)
           .then(results => {
             dispatch({type: SEARCH_NAME, payload: [...results.data]})
           })
