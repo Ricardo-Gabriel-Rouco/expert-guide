@@ -8,6 +8,7 @@ import styles from './Cards.module.css';
 
 export default function Cards({variableX}) {
 
+  // eslint-disable-next-line
   const games = useSelector(state=>state.games)
 
 
