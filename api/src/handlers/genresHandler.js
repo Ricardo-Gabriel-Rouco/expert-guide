@@ -1,5 +1,5 @@
 const {listGenres} = require('../controllers/db/getGenres')
-const {allGenres} = require('../controllers/db/populateGenres')
+// const {allGenres} = require('../controllers/db/populateGenres')
 
 const getAllGenres = async(req, res ) =>{
   try {
@@ -14,14 +14,14 @@ const getAllGenres = async(req, res ) =>{
   }
 }
 
-const createGenres = async(req, res) => {
-  try {
-    const populate = await allGenres()
-    res.status(200).send(populate)
-  } catch (error) {
-    res.status(400).json(error)
-  }
-}
+// const createGenres = async(req, res) => {
+//   try {
+//     const populate = await allGenres()
+//     res.status(200).send(populate)
+//   } catch (error) {
+//     res.status(400).json(error)
+//   }
+// }
 
 module.exports = {
   getAllGenres,
