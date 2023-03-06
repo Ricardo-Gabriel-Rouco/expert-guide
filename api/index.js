@@ -19,12 +19,14 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const {populateGenres} = require('./src/db.js')
 require('dotenv').config()
 const {PORT} = process.env
 
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: true }).then(async () => {
+  await populateGenres()
   server.listen(PORT, () => {
     console.log('%s listening at ', PORT); // eslint-disable-line no-console
   });

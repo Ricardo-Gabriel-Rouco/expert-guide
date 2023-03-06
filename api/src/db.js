@@ -41,39 +41,20 @@ Videogame.belongsToMany(Genre, {through: VideogameGenre})
 Genre.belongsToMany(Videogame, {through: VideogameGenre})
 
 // con estas lineas voy a traer los generos de la api rawg directamente al iniciar el server
-const allGenres = async () => {
-  const checkData = await Genre.findAll()
-  if (checkData.length < 2) {
-    const genresFromApi = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
-    const promises = genresFromApi.data.results.map(g => {
-      return Genre.create({
-        id: g.id,
-        name: g.name
-      })
-    })
-    return Promise.all(promises)
-  }
+async function populateGenres() {
+  const genresFromApi = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
+  const genres = genresFromApi.data.results.map(g => ({
+    id: g.id,
+    name: g.name
+  }));
+  await Genre.bulkCreate(genres);
 }
-allGenres()
-// const allGenres = async () => {
-//   const checkData = await Genre.findAll()
-//   if(checkData.length < 2){
-//     const genresFromApi = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
-//     //console.log(genresFromApi)
-//     const populateGenresDb = await genresFromApi.data.results.map(g =>{
-//       Genre.create({
-//         id: g.id,
-//         name: g.name
-//       })
-//     })
-//     return populateGenresDb
-//   }
-// }
-// allGenres()
+
 // fin de la repoblacion de la bbdd
 
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
+  populateGenres
 };
