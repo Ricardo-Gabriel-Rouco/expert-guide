@@ -41,20 +41,20 @@ Videogame.belongsToMany(Genre, {through: VideogameGenre})
 Genre.belongsToMany(Videogame, {through: VideogameGenre})
 
 // con estas lineas voy a traer los generos de la api rawg directamente al iniciar el server
-const allGenres = async () => {
-  const checkData = await Genre.findAll()
-  if (checkData.length < 2) {
-    const genresFromApi = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
-    const promises = genresFromApi.data.results.map(g => {
-      return Genre.create({
-        id: g.id,
-        name: g.name
-      })
-    })
-    return Promise.all(promises)
-  }
-}
-await allGenres()
+// const allGenres = async () => {
+//   const checkData = await Genre.findAll()
+//   if (checkData.length < 2) {
+//     const genresFromApi = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
+//     const promises = genresFromApi.data.results.map(g => {
+//       return Genre.create({
+//         id: g.id,
+//         name: g.name
+//       })
+//     })
+//     return Promise.all(promises)
+//   }
+// }
+// allGenres()
 // const allGenres = async () => {
 //   const checkData = await Genre.findAll()
 //   if(checkData.length < 2){
