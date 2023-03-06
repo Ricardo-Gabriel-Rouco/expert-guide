@@ -1,0 +1,27 @@
+.pages{
+  margin-top: 100px; 
+  margin-left: 175px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+.pages li {
+  list-style-type: none;
+}
+
+.loader {
+  font-size: 25px;
+  color:floralwhite;
+  display: inline-block;
+  justify-content: center;
+  margin-top: 20%;
+  margin-left: 100%;
+}
+
+.loader img {
+  width: 200px;
+  height: 200px;
+}

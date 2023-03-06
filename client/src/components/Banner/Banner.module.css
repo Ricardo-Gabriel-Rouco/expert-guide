@@ -1,0 +1,41 @@
+
+.banner {
+  text-align: center;
+  display: flex;
+  position: fixed;
+  top: 0;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none;
+  width: 100%;
+  padding: 0 auto;
+  background-color: rgba(14, 73, 131, 0.9)
+}
+
+.banner a {
+  text-decoration: none;
+  color: darkgrey;
+}
+
+a:active a:link a:visited {
+  text-decoration: none;
+}
+
+.banner li {
+  margin: 10px;
+}
+
+.title {
+  font-size: 2rem;  
+  font-weight: bold;
+}
+
+.searchBar2 {
+  font-size: 1.2rem;
+}
+.searchBar2 button:hover{
+  cursor: pointer;
+  text-decoration: underline solid 2px;
+  background-color: #A7E2F9;
+}
+
