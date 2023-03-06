@@ -24,8 +24,8 @@ fs.readdirSync(path.join(__dirname, '/models'))
   });
 
 // Injectamos la conexion (sequelize) a todos los modelos
-(async() => {
-  modelDefiners.forEach(model => model(sequelize));
+
+modelDefiners.forEach(model => model(sequelize));
 // Capitalizamos los nombres de los modelos ie: product => Product
 let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
@@ -54,7 +54,6 @@ const allGenres = async () => {
     return Promise.all(promises)
   }
 }
-
 await allGenres()
 // const allGenres = async () => {
 //   const checkData = await Genre.findAll()
@@ -72,7 +71,7 @@ await allGenres()
 // }
 // allGenres()
 // fin de la repoblacion de la bbdd
-})()
+
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
