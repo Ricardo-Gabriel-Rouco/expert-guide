@@ -17,7 +17,7 @@ export default function Detail() {
   useEffect(() =>{
     const fetchVideoGame = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/videogame/${id}`)
+        const response = await axios.get(`/videogame/${id}`)
         setVideoGame(response.data)
       } catch (error) {
         console.log(error)
