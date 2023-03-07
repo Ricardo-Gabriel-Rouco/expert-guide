@@ -41,15 +41,21 @@ Videogame.belongsToMany(Genre, {through: VideogameGenre})
 Genre.belongsToMany(Videogame, {through: VideogameGenre})
 
 // con estas lineas voy a traer los generos de la api rawg directamente al iniciar el server
-async function populateGenres() {
-  const genresFromApi = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
-  const genres = genresFromApi.data.results.map(g => ({
-    id: g.id,
-    name: g.name
-  }));
-  await Genre.bulkCreate(genres);
+const allGenres = async () => {
+  const checkData = await Genre.findAll()
+  if(checkData.length < 2){
+    const genresFromApi = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
+    //console.log(genresFromApi)
+    const populateGenresDb = await genresFromApi.data.results.map(g =>{
+      Genre.create({
+        id: g.id,
+        name: g.name
+      })
+    })
+    return populateGenresDb
+  }
 }
-
+allGenres()
 // fin de la repoblacion de la bbdd
 
 
