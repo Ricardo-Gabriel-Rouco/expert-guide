@@ -8,7 +8,7 @@ const getAllGenres = async(req, res ) =>{
     if(!genres.length){
       throw new Error('Not Found')
     } else {
-      res.status(200).send(genres)
+      res.status(200).json(genres)
     }
   } catch (error) {
     res.status(400).send(error)
@@ -17,5 +17,5 @@ const getAllGenres = async(req, res ) =>{
 
 
 module.exports = {
-  getAllGenres,
+  getAllGenres
 }

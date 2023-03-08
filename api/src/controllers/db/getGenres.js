@@ -1,6 +1,6 @@
 const { Genre } = require('../../db')
 
-const listGenres = async () =>{
+async function listGenres (){
   try {
     const result = await Genre.findAll()
     return result
