@@ -1,5 +1,4 @@
 const { Videogame, Genre } = require('../../db')
-const baseUrl = 'http://localhost:5000/'
 
 const getVideoGamesFromdb = async () => {
   try {

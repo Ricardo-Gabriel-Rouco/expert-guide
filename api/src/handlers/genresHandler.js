@@ -4,12 +4,12 @@ const {listGenres} = require('../controllers/db/getGenres')
 const getAllGenres = async(req, res ) =>{
   try {
     let genres = await listGenres()
-    console.log(genres)
-    if(!genres.length){
-      throw new Error('Not Found')
-    } else {
-      res.status(200).json(genres)
-    }
+    // console.log(genres)
+    // if(!genres.length){
+    //   throw new Error('Not Found')
+    // } else {
+    res.status(200).json(genres)
+    // }
   } catch (error) {
     res.status(400).send(error)
   }
